@@ -1,5 +1,5 @@
 import {createTask} from "./addTask.js";
-import { uniqueDates } from "../services/date.js";
+import { uniqueDates, orderDates} from "../services/date.js";
 import dateElement from "./dateElement.js";
 
 
@@ -9,6 +9,7 @@ export const displayTasks = ()=>{
     const taskList = JSON.parse(localStorage.getItem('tasks')) || [];
     
     const dates = uniqueDates(taskList);
+    orderDates(dates);
 
     dates.forEach((date) => {
         const dateMoment = moment(date, 'DD/MM/YYYY');
@@ -21,6 +22,6 @@ export const displayTasks = ()=>{
             }
             
         });
-    })
+    });
 
-}
+};
